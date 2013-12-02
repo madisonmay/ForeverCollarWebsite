@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "ForeverCollar",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,5 +8,17 @@
   "dependencies": {
     "express": "3.4.0",
     "jade": "*"
+  },
+  "description": "ERROR: No README data found!",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/madisonmay/ForeverCollarWebsite.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/madisonmay/ForeverCollarWebsite/issues"
   }
 }
