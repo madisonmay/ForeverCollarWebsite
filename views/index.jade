@@ -1,0 +1,55 @@
+extends layout
+
+block header 
+  meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
+  style(type='text/css')
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100%; position: fixed; top: 0; left: 0; }
+
+  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBWwIBY5tvuBAr_CQc0VW5t2dxpQNBSVd0&sensor=true')
+        
+  script(type='text/javascript')
+    var initialLocation;
+
+    function initialize(locations) {
+
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+           var mapOptions = {
+            center: initialLocation,
+            zoom: 14
+          };
+          var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+          var location = locations[0];
+          var latlng = new google.maps.LatLng(location.lat, location.lng);
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+          });
+        }, function() {
+          handleNoGeolocation(browserSupportFlag);
+        });
+      }
+    }
+
+  script
+    $(document).ready(function() {
+      $('#searchbutton').click(function() {
+        $.post('/find', {'number': $('#search').val()}, function(data) {
+          console.log(data);
+          $('#max-container').remove();
+          initialize(data);
+        })
+      })
+    })
+block content
+  div#max-container
+    div#title Call your dog!
+    div#searchdiv.input-group
+      input#search.form-control(type='tel', placeholder='+12345678900')
+      span.input-group-btn
+        button.btn.btn-default.btn-success#searchbutton(type="button") Go!
+  div#map-canvas

@@ -1,0 +1,44 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("/images/dog.png"); 
+  background-repeat: no-repeat; 
+  background-attachment:fixed; 
+  background-position:left; 
+  background-color: #eee;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#searchdiv {
+  width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#title {
+  width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 250px;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+#search {
+  display: inline-block;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+#max-container {
+  width: 100%;
+  height: 100%;
+}
