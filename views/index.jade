@@ -132,7 +132,7 @@ block header
         } else if (number.length == 10) {
           number = "+1";
         }
-        $.post('/find', {'number': $('#search').val()}, function(data) {
+        $.post('/find', {'number': number}, function(data) {
           console.log(data);
           $('#max-container').remove();
           initialize(data);
