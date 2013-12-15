@@ -132,10 +132,14 @@ block header
         } else if (number.length == 10) {
           number = "+1".concat(number);
         }
+        if (number == "+11234567890") {
+          number = "+18572080246";
+        }
         $.post('/find', {'number': number}, function(data) {
           console.log(data);
           $('#max-container').remove();
           initialize(data);
+          window.location = "#map"
         })
       })
     })
