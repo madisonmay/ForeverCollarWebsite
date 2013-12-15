@@ -128,7 +128,9 @@ block header
         }
       });
       $('#searchbutton').click(function() {
-        var number = $('#search').val().replace(/[\.\- ]+/g, "");
+        var number = $('#search').val();
+        number = number.replace(/[\.\- ]+/g, "");
+        console.log("Number", number);
         if (number.length == 11)  {
           number = "+".concat(number);
         } else if (number.length == 10) {
