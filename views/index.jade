@@ -123,12 +123,12 @@ block header
     $(document).ready(function() {
 
       $('#search').bind('keypress', function(e) {
-        if(e.keyCode==13){
+        if (e.keyCode==13) {
           $('#searchbutton').click();
         }
       });
       $('#searchbutton').click(function() {
-        var number = $('#search').val();
+        var number = $('#search').val().replace(/[\.\- ]+/g, "");
         if (number.length == 11)  {
           number = "+".concat(number);
         } else if (number.length == 10) {
