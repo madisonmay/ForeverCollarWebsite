@@ -3,9 +3,30 @@ extends layout
 block header 
   meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
   style(type='text/css')
+      @font-face {
+        font-family: CODE;
+        font-weight: normal;
+        src: url("/fonts/CODE Light.otf") format("opentype");
+      }
+
+      @font-face {
+        font-family: CODE;
+        font-weight: bold;
+        src: url("/fonts/CODE Bold.otf") format("opentype");
+      }
+
       html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 100%; position: fixed; top: 0; left: 0; }
+      body { 
+        height: 100%; 
+        margin: 0; 
+        padding: 0; 
+        background-image: url('/images/background.jpg'); 
+        background-size: 100%;
+        overflow: hidden;
+        color: #eee;
+      }
+
+      #map-canvas { height: 100%; position: fixed; top: 0; left: 0;}
       #panel {
         position: absolute;
         top: 5px;
@@ -87,8 +108,10 @@ block header
 
           var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
           directionsDisplay.setMap(map);
+          $('body').css('background-image', 'none');
+          $('body').css('background-color', '#E9E5DC');
           directionsDisplay.setPanel(document.getElementById('directions-panel'));
-          calcRoute()
+          calcRoute();
 
           var marker = new google.maps.Marker({
             position: latlng,
@@ -111,11 +134,13 @@ block header
       })
     })
 block content
+  div(style='font-family: CODE; font-size: 50px; position: absolute; top: 10px; left: 10px;') FOREVER COLLAR
   div#max-container
-    div#title Call your dog!
+    div#title(style='font-family: CODE; font-size: 30px;')
+      b Call your dog!
     div#searchdiv.input-group
       input#search.form-control(type='tel', placeholder='+12345678900')
       span.input-group-btn
-        button.btn.btn-default.btn-success#searchbutton(type="button") Go!
+        button.btn.btn-default.btn-success#searchbutton(type="button") Go
   div#directions-panel
   div#map-canvas
