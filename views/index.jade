@@ -113,10 +113,6 @@ block header
           directionsDisplay.setPanel(document.getElementById('directions-panel'));
           calcRoute();
 
-          var marker = new google.maps.Marker({
-            position: latlng,
-            map: map
-          });
         }, function() {
           handleNoGeolocation(browserSupportFlag);
         });
@@ -125,6 +121,12 @@ block header
 
   script
     $(document).ready(function() {
+
+      $('#search').bind('keypress', function(e) {
+        if(e.keyCode==13){
+          $('#searchbutton').click();
+        }
+      });
       $('#searchbutton').click(function() {
         var number = $('#search').val();
         if (number.length == 11)  {
